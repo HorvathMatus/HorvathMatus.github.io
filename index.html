@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matúš Horváth</title>
+<meta name="description" content="Matúš Horváth — Assistant Professor of Finance at Masaryk University, Brno. Research on portfolio theory, tail risk, Expected Shortfall and digital assets.">
+<meta property="og:title" content="Matúš Horváth">
+<meta property="og:description" content="Assistant Professor of Finance, Masaryk University. Portfolio theory, tail risk and digital assets.">
+<meta property="og:image" content="https://horvathmatus.github.io/assets/photo.jpg">
+<meta name="theme-color" content="#fbfaf8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131514" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%232a5ea8'/%3E%3Ctext x='32' y='41' font-family='Georgia,serif' font-size='26' text-anchor='middle' fill='white'%3EMH%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+<style>
+  /* ---------- colours: change --accent to restyle the whole page ---------- */
+  :root {
+    color-scheme: light dark;
+    --bg: #fbfaf8;
+    --bar: rgba(251, 250, 248, 0.86);
+    --text: #1f1f1d;
+    --muted: #63615b;
+    --faint: #98958d;
+    --line: #e8e5de;
+    --accent: #2a5ea8;
+    --accent-soft: #e8eef8;
+    --serif: "Newsreader", Georgia, "Times New Roman", serif;
+    --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #131514;
+      --bar: rgba(19, 21, 20, 0.86);
+      --text: #e8e6e1;
+      --muted: #a4a29b;
+      --faint: #74726c;
+      --line: #262a28;
+      --accent: #93b8f0;
+      --accent-soft: #1a2333;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.65 var(--sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+  ::selection { background: var(--accent); color: var(--bg); }
+
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- top bar ---------- */
+  .topbar {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--bar);
+    backdrop-filter: saturate(160%) blur(10px);
+    -webkit-backdrop-filter: saturate(160%) blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 60px; }
+  .brand { font: 500 19px var(--serif); color: var(--text); text-decoration: none; white-space: nowrap; }
+  .topbar nav { display: flex; gap: 22px; overflow-x: auto; scrollbar-width: none; }
+  .topbar nav::-webkit-scrollbar { display: none; }
+  .topbar nav a { font-size: 14px; color: var(--muted); text-decoration: none; white-space: nowrap; }
+  .topbar nav a:hover { color: var(--accent); }
+
+  /* ---------- intro ---------- */
+  .intro { display: flex; align-items: center; gap: 32px; padding: 72px 0 48px; }
+  .avatar {
+    width: 132px; height: 132px; flex: none;
+    border-radius: 50%; object-fit: cover;
+    box-shadow: 0 0 0 6px var(--accent-soft);
+  }
+  h1 {
+    font: 500 clamp(38px, 6vw, 50px)/1.08 var(--serif);
+    letter-spacing: -0.015em;
+    margin: 0 0 8px;
+  }
+  .role { margin: 0; color: var(--muted); font-size: 17px; line-height: 1.5; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px 20px; list-style: none; padding: 0; margin: 18px 0 0; }
+  .links a {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 14.5px; font-weight: 500; color: var(--muted); text-decoration: none;
+    transition: color .15s ease;
+  }
+  .links a:hover { color: var(--accent); }
+  .links svg { width: 17px; height: 17px; flex: none; }
+
+  /* ---------- sections ---------- */
+  section { padding: 44px 0; border-top: 1px solid var(--line); scroll-margin-top: 64px; }
+  h2 { font: 500 27px/1.2 var(--serif); margin: 0 0 22px; letter-spacing: -0.01em; }
+  h3 {
+    font-size: 12.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--faint); margin: 34px 0 10px;
+  }
+  h2 + h3 { margin-top: 0; }
+  p { margin: 0 0 16px; }
+  .lead p { color: var(--muted); }
+  .lead strong { color: var(--text); font-weight: 500; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 22px 0 0; }
+  .tags li {
+    font-size: 13.5px; padding: 4px 12px; border-radius: 999px;
+    background: var(--accent-soft); color: var(--accent);
+  }
+
+  /* rows: a date column on the left, content on the right */
+  .rows { list-style: none; padding: 0; margin: 0; }
+  .row { display: grid; grid-template-columns: 104px 1fr; gap: 20px; padding: 11px 0; }
+  .when { color: var(--faint); font-size: 14.5px; font-variant-numeric: tabular-nums; padding-top: 1px; }
+  .what { font-weight: 500; }
+  .sub { color: var(--muted); font-size: 14.5px; }
+
+  /* publications */
+  .pubs { list-style: none; padding: 0; margin: 0; }
+  .pubs li + li { margin-top: 16px; }
+  .pub-title { font-weight: 500; color: var(--text); text-decoration: none; }
+  a.pub-title:hover { color: var(--accent); text-decoration: underline; }
+  .authors, .venue { color: var(--muted); font-size: 14.5px; }
+  .venue i { color: var(--text); opacity: .8; }
+  .me { color: var(--text); font-weight: 600; }
+
+  .chip {
+    display: inline-block; vertical-align: 2px; margin-left: 6px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.04em;
+    padding: 1px 8px; border-radius: 999px;
+    background: var(--accent); color: var(--bg);
+  }
+
+  address { font-style: normal; color: var(--muted); }
+
+  footer { padding: 28px 0 48px; border-top: 1px solid var(--line); color: var(--faint); font-size: 13.5px; }
+
+  /* ---------- small screens ---------- */
+  @media (max-width: 620px) {
+    .wrap { padding: 0 16px; }
+    .brand { display: none; }
+    .bar { justify-content: flex-start; }
+    .intro { flex-direction: column; align-items: flex-start; gap: 22px; padding: 44px 0 36px; }
+    .avatar { width: 108px; height: 108px; }
+    .row { grid-template-columns: 1fr; gap: 2px; }
+    .rows .row + .row { margin-top: 6px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap bar">
+    <a class="brand" href="#top">Matúš Horváth</a>
+    <nav aria-label="Sections">
+      <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#cv">CV</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+
+  <!-- ================= INTRO ================= -->
+  <div class="intro">
+    <img class="avatar" src="assets/photo.jpg" alt="Portrait of Matúš Horváth" width="132" height="132">
+    <div>
+      <h1>Matúš Horváth</h1>
+      <p class="role">Assistant Professor of Finance<br>Masaryk University, Brno</p>
+      <ul class="links">
+        <li><a href="mailto:matus.horvath@econ.muni.cz">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Email</a></li>
+        <!-- Upload your CV as files/CV_Horvath.pdf (or change the file name here) -->
+        <li><a href="files/CV_Horvath.pdf" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>CV</a></li>
+        <li><a href="https://orcid.org/0000-0001-7739-2071" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8.5 10v6.5M8.5 7.3v.2" stroke-linecap="round"/><path d="M11.5 16.5V7.5h2.2a4.5 4.5 0 0 1 0 9z" stroke-linejoin="round"/></svg>ORCID</a></li>
+        <li><a href="https://github.com/HorvathMatus" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>GitHub</a></li>
+        <li><a href="https://scholar.google.com/citations?user=UuTPeW8AAAAJ&amp;hl=en" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>Scholar</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about" class="lead">
+    <p>I am an <strong>Assistant Professor at the Department of Finance</strong>, Faculty of Economics and Administration, Masaryk University in Brno. My research focuses on <strong>portfolio theory and financial risk measurement</strong>&nbsp;— tail risk, Expected Shortfall and higher moments&nbsp;— with a particular interest in cryptocurrency and digital-asset markets. I also work on ESG, investor attention and cross-market spillovers.</p>
+    <p>I received my Ph.D. in Finance from Masaryk University in 2025 (summa cum laude). I have been a postdoctoral researcher with the <a href="https://www.theida.net" target="_blank" rel="noopener">IDA Institute of Digital Assets</a> and the Institute of Economic Research of the Slovak Academy of Sciences, and a visiting researcher at Humboldt-Universität zu Berlin and University College Dublin.</p>
+    <ul class="tags" aria-label="Research interests">
+      <li>Portfolio theory</li>
+      <li>Tail risk &amp; Expected Shortfall</li>
+      <li>Higher moments</li>
+      <li>Digital assets</li>
+      <li>ESG</li>
+      <li>Spillovers &amp; dependence</li>
+    </ul>
+  </section>
+
+  <!-- ================= RESEARCH ================= -->
+  <section id="research">
+    <h2>Research</h2>
+
+    <h3>Publications</h3>
+    <div class="rows">
+      <div class="row">
+        <div class="when">2025</div>
+        <ul class="pubs">
+          <li>
+            <a class="pub-title" href="https://doi.org/10.1007/s11156-024-01313-0" target="_blank" rel="noopener">Spectral risk for digital assets</a>
+            <div class="authors">Lu, M.-J., <span class="me">Horváth, M.</span>, Wang, X. &amp; Härdle, W. K.</div>
+            <div class="venue"><i>Review of Quantitative Finance and Accounting</i> 64(2), 537–574</div>
+          </li>
+          <li>
+            <a class="pub-title" href="https://doi.org/10.1016/j.frl.2024.106685" target="_blank" rel="noopener">No shortfall of ES estimators: Insights from cryptocurrency portfolios</a>
+            <div class="authors"><span class="me">Horváth, M.</span> &amp; Výrost, T.</div>
+            <div class="venue"><i>Finance Research Letters</i> 73, 106685</div>
+          </li>
+          <li>
+            <a class="pub-title" href="https://doi.org/10.1016/j.najef.2024.102350" target="_blank" rel="noopener">The role of ESG factor in stock clustering based on risk-return-liquidity dimensions</a>
+            <div class="authors">Staněk Gyönyör, L., <span class="me">Horváth, M.</span>, Stašek, D. &amp; Stachoň, M.</div>
+            <div class="venue"><i>The North American Journal of Economics and Finance</i> 76, 102350</div>
+          </li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="when">2024</div>
+        <ul class="pubs">
+          <li>
+            <a class="pub-title" href="https://doi.org/10.1016/j.najef.2024.102093" target="_blank" rel="noopener">Crypto havens during war times? Evidence from the Russian invasion of Ukraine</a>
+            <div class="authors">Hampl, F., Vágnerová Linnertová, D. &amp; <span class="me">Horváth, M.</span></div>
+            <div class="venue"><i>The North American Journal of Economics and Finance</i> 71, 102093</div>
+          </li>
+          <li>
+            <a class="pub-title" href="https://doi.org/10.1016/j.ribaf.2024.102230" target="_blank" rel="noopener">Does ESG affect stock market dependence? An empirical exploration of S&amp;P 1200 companies shows the divergent nature of E–S–G pillars</a>
+            <div class="authors">Staněk Gyönyör, L. &amp; <span class="me">Horváth, M.</span></div>
+            <div class="venue"><i>Research in International Business and Finance</i> 69, 102230</div>
+          </li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="when">2023</div>
+        <ul class="pubs">
+          <li>
+            <a class="pub-title" href="https://doi.org/10.31577/ekoncas.2023.03.01" target="_blank" rel="noopener">Beneish model for the detection of tax manipulation: Evidence from Slovakia</a>
+            <div class="authors">Bačo, T., Baumöhl, E., <span class="me">Horváth, M.</span> &amp; Výrost, T.</div>
+            <div class="venue"><i>Ekonomický časopis (Journal of Economics)</i> 71(3), 185–201</div>
+          </li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="when">2022</div>
+        <ul class="pubs">
+          <li>
+            <a class="pub-title" href="https://doi.org/10.1016/j.frl.2022.103292" target="_blank" rel="noopener">The role of investor attention in global asset price variation during the invasion of Ukraine</a>
+            <div class="authors">Halousková, M., Stašek, D. &amp; <span class="me">Horváth, M.</span></div>
+            <div class="venue"><i>Finance Research Letters</i> 50, 103292</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Working papers</h3>
+    <div class="rows">
+      <div class="row">
+        <div class="when">Under review</div>
+        <ul class="pubs">
+          <li>
+            <span class="pub-title">Which risk do crypto index investments have?</span>
+            <div class="authors">Teng, H.-W., <span class="me">Horváth, M.</span>, Lu, M.-J. &amp; Härdle, W. K.</div>
+          </li>
+          <li>
+            <span class="pub-title">Fire! Don’t panic, it is not a hurricane</span>
+            <div class="authors"><span class="me">Horváth, M.</span>, Hampl, F. &amp; Vágnerová Linnertová, D.</div>
+          </li>
+          <li>
+            <span class="pub-title">Transitory and persistent cross-market spillovers of energy tokens</span>
+            <div class="authors">Amor, S. B. &amp; <span class="me">Horváth, M.</span></div>
+          </li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="when">In progress</div>
+        <ul class="pubs">
+          <li>
+            <span class="pub-title">Beyond shortfall: Expected shortfall and upside estimators in cryptocurrency portfolios</span>
+            <div class="authors"><span class="me">Horváth, M.</span> &amp; Výrost, T.</div>
+          </li>
+          <li>
+            <span class="pub-title">Skewness illusion in cryptocurrency portfolios</span>
+            <div class="authors"><span class="me">Horváth, M.</span> &amp; Rigamonti, A.</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROJECTS ================= -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <ul class="rows">
+      <li class="row">
+        <div class="when">2026–2027</div>
+        <div>
+          <div class="what">SHARPS: Skewness, Higher Moments &amp; Alternative Risk Measures for Portfolio Selection<span class="chip">PI</span></div>
+          <div class="sub">Masaryk University · MUNI/JS/1970/2025</div>
+        </div>
+      </li>
+      <li class="row">
+        <div class="when">2026–2028</div>
+        <div>
+          <div class="what">Tail risk measures on financial markets</div>
+          <div class="sub">Czech Science Foundation · GC26-22676J · PI: T. Výrost</div>
+        </div>
+      </li>
+      <li class="row">
+        <div class="when">2026–2028</div>
+        <div>
+          <div class="what">Attention-driven market risk</div>
+          <div class="sub">Czech Science Foundation · GA26-22277S · PI: Š. Lyócsa</div>
+        </div>
+      </li>
+      <li class="row">
+        <div class="when">2026–2027</div>
+        <div>
+          <div class="what">Modular AI for monitoring and reasoning of investment portfolios</div>
+          <div class="sub">CZ.01.01.01/01/24_062/0007051 · PI: T. Plíhal</div>
+        </div>
+      </li>
+      <li class="row">
+        <div class="when">2024–2026</div>
+        <div>
+          <div class="what">Corporate efficiency, failure, and EU funds: Lessons from Slovakia</div>
+          <div class="sub">09I03-03-V04-00429 · PI: T. Výrost</div>
+        </div>
+      </li>
+      <li class="row">
+        <div class="when">2023–2026</div>
+        <div>
+          <div class="what">IDA Institute of Digital Assets</div>
+          <div class="sub">CF166/15.11.2022 · PI: W. K. Härdle</div>
+        </div>
+      </li>
+      <li class="row">
+        <div class="when">2023–2026</div>
+        <div>
+          <div class="what">Financial cycle: design, modelling and forecasting within a machine learning framework</div>
+          <div class="sub">Slovak Research and Development Agency · APVV-22-0472 · PI: Š. Lyócsa</div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ================= TEACHING ================= -->
+  <section id="teaching">
+    <h2>Teaching</h2>
+    <p class="sub">Masaryk University, Faculty of Economics and Administration</p>
+    <ul class="rows">
+      <li class="row"><div class="when">since 2022</div><div><span class="what">Financial Markets</span> <span class="sub">· Bachelor’s</span></div></li>
+      <li class="row"><div class="when">since 2021</div><div><span class="what">Financial Management</span> <span class="sub">· Bachelor’s</span></div></li>
+      <li class="row"><div class="when">2021–2022</div><div><span class="what">Portfolio Theory</span> <span class="sub">· Master’s</span></div></li>
+      <li class="row"><div class="when">2021</div><div><span class="what">Financial Mathematics</span> <span class="sub">· Bachelor’s</span></div></li>
+    </ul>
+  </section>
+
+  <!-- ================= CV ================= -->
+  <section id="cv">
+    <h2>CV</h2>
+
+    <h3>Positions</h3>
+    <ul class="rows">
+      <li class="row">
+        <div class="when">2024–now</div>
+        <div><div class="what">Assistant Professor</div><div class="sub">Department of Finance, Masaryk University, Brno</div></div>
+      </li>
+      <li class="row">
+        <div class="when">2025–2026</div>
+        <div><div class="what">Postdoctoral Researcher</div><div class="sub">IDA Institute of Digital Assets, Bucharest University of Economic Studies</div></div>
+      </li>
+      <li class="row">
+        <div class="when">2025–2026</div>
+        <div><div class="what">Postdoctoral Researcher</div><div class="sub">Institute of Economic Research, Slovak Academy of Sciences, Bratislava</div></div>
+      </li>
+      <li class="row">
+        <div class="when">2022</div>
+        <div><div class="what">Data Analyst</div><div class="sub">Financial Directorate of the Slovak Republic</div></div>
+      </li>
+    </ul>
+
+    <h3>Research stays</h3>
+    <ul class="rows">
+      <li class="row">
+        <div class="when">2024</div>
+        <div><div class="what">University College Dublin</div><div class="sub">Visiting researcher, hosted by Prof. Alessia Paccagnini</div></div>
+      </li>
+      <li class="row">
+        <div class="when">2023</div>
+        <div><div class="what">Humboldt-Universität zu Berlin</div><div class="sub">Visiting researcher, hosted by Prof. Wolfgang Karl Härdle</div></div>
+      </li>
+    </ul>
+
+    <h3>Education</h3>
+    <ul class="rows">
+      <li class="row">
+        <div class="when">2025</div>
+        <div><div class="what">Ph.D. in Finance, Masaryk University</div><div class="sub">Thesis: <i>Alternative approaches to portfolio theory</i> · summa cum laude</div></div>
+      </li>
+      <li class="row">
+        <div class="when">2020</div>
+        <div><div class="what">Ing. (M.Sc.) in Finance, Masaryk University</div><div class="sub">Faculty of Economics and Administration</div></div>
+      </li>
+      <li class="row">
+        <div class="when">2019</div>
+        <div><div class="what">Mgr. (M.Sc.) in Financial Mathematics, Masaryk University</div><div class="sub">Faculty of Science</div></div>
+      </li>
+      <li class="row">
+        <div class="when">2017–2018</div>
+        <div><div class="what">Bc. in Finance · Bc. in Financial and Insurance Mathematics</div><div class="sub">Masaryk University</div></div>
+      </li>
+    </ul>
+
+    <h3>Awards</h3>
+    <ul class="rows">
+      <li class="row">
+        <div class="when">2025</div>
+        <div><div class="what">Vice-Rector’s Award for Excellent Results in Doctoral Studies</div><div class="sub">Masaryk University</div></div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p><a href="mailto:matus.horvath@econ.muni.cz">matus.horvath@econ.muni.cz</a></p>
+    <address>
+      Department of Finance, Office 407<br>
+      Faculty of Economics and Administration, Masaryk University<br>
+      Lipová 41a, 602 00 Brno, Czech Republic
+    </address>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Matúš Horváth · Last updated October 2026</div>
+</footer>
+
+</body>
+</html>
